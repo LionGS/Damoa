@@ -25,8 +25,8 @@
         <thead>
           <tr>
             <th width="10%">#</th>
-            <th width="50%">제목</th>
-            <th width="20%">내용</th>
+            <th width="30%">제목</th>
+            <th width="40%">내용</th>
             <th width="20%">출처</th>
           </tr>
         </thead>
@@ -34,8 +34,8 @@
           <% @posts.each do |post| %>
           <tr>
             <td><%=@post_no%></td>
-            <td><a href="<%=post.link%>"><%=post.title%></a></td>
-            <td><%=post.posttext%></td>
+            <td><a href="<%=post.link%>"><%=truncate post.title, length: 30%></a></td>
+            <td><%= truncate post.posttext, length: 60 %></td>
             <td><%=post.post_attribute%></td>
           </tr>
           <%@post_no = @post_no+1%>
