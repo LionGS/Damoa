@@ -1,0 +1,2 @@
+class Totalpost < ApplicationRecord
+end
