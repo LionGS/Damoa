@@ -1,62 +1,21 @@
-<div class="container px-5 py-5">
-      <div class="header clearfix py-auto">
-        <nav>
-          <ul class="nav nav-pills float-right">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <% if !user_signed_in? %>
-              <li class="nav-item">
-              <%= link_to "회원가입", new_user_registration_path ,class: "nav-link"%>
-              </li>
-            <% else %>
-              <li class="nav-item">
-              <%= link_to "회원정보수정", edit_user_registration_path ,class: "nav-link"%>
-              </li>
-            <% end %>
-            <li class="nav-item">
-              <% if user_signed_in? %>
-                <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 하시겠습니까?" } ,class: "nav-link" %>
-              <% else %>
-                <%= link_to "로그인", new_user_session_path ,class: "nav-link"%>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Damoa</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1 class="display-3">Damoa에 오신것을 환영합니다.</h1>
-        <p class="lead">다모아는 여러분에게 맞는 게시물들을 자동으로 찾아서 보여드립니다.</p>
-      </div>
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th width="10%">#</th>
-            <th width="30%">제목</th>
-            <th width="40%">내용</th>
-            <th width="20%">출처</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-          <tr>
-            <td><%=@post_no%></td>
-            <td><a href="<%=post.link%>"><%=truncate post.title, length: 30%></a></td>
-            <td><%= truncate post.posttext, length: 60 %></td>
-            <td><%=post.post_attribute%></td>
-          </tr>
-          <%@post_no = @post_no+1%>
-          <%end%>
-        </tbody>
-      </table>
-
-
-
-      <footer class="footer">
-        <p>© Company 2017</p>
-      </footer>
-
-    </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="10%">#</th>
+      <th width="30%">제목</th>
+      <th width="40%">내용</th>
+      <th width="20%">출처</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%=@post_no%></td>
+      <td><a href="<%=post.link%>"><%=truncate post.title, length: 30%></a></td>
+      <td><%= truncate post.posttext, length: 60 %></td>
+      <td><%=post.post_attribute%></td>
+    </tr>
+    <%@post_no = @post_no+1%>
+    <%end%>
+  </tbody>
+</table>
