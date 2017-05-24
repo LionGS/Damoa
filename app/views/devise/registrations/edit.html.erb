@@ -1,40 +1,36 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container col-6">
+  <!-- <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+  <h2 class = "mb-3"> 회원정보 수정 </h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <!-- <%= devise_error_messages! %>
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <!-- <%= devise_error_messages! %>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div> -->
-  <%= f.label :tag_list, "Tags" %>
-  <%= f.text_field :tag_list, value: resource.tag_list.join(", ") %>
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div> -->
+    <%= f.label :tag_list, "관심 키워드"%>
+    <%= f.text_area :tag_list, value: resource.tag_list.join(", ") ,:class => "form-control mb-3", :rows => "5"%>
+    <br>
+    <i>변경사항을 저장하려면 비밀번호를 입력하십시오.</i><br />
+    <%= f.password_field :current_password, autocomplete: "off", :class => "form-control my-3" %>
+    <%= f.submit "수정완료", :class => "btn btn-lg btn-primary btn-block my-3" %>
+  <% end %>
+  <%= button_to "회원탈퇴", registration_path(resource_name), data: { confirm: "정말 탈퇴하시겠습니까? 모든 정보는 소멸됩니다." }, method: :delete , class: "btn btn-danger"%>
+<!--
+  <%= link_to "Back", :back %> -->
+</div>
