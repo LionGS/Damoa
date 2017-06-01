@@ -4,7 +4,6 @@
       <th width="5%">#</th>
       <th width="25%">제목</th>
       <th width="35%">내용</th>
-      <th width="15%">출처</th>
       <th width="10%">인기도</th>
     </tr>
   </thead>
@@ -14,7 +13,6 @@
       <td><%=@post_no%></td>
       <td><a href="<%=post.link%>"><%=truncate post.title, length: 30%></a></td>
       <td><%= truncate post.posttext, length: 60 %></td>
-      <td><%= post.post_attribute%></td>
       <td><%= post.popurarity %></td>
     </tr>
     <%@post_no = @post_no+1%>
