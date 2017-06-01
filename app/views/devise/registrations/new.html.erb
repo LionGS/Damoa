@@ -5,7 +5,7 @@
       <%= f.label :email, :class => "sr-only" %>
       <%= f.email_field :email, autofocus: true, :class => "form-control my-3", :placeholder => "Email address" %>
       <%= f.label :password, :class => "sr-only" %>
-      <%= f.text_field :username,:class => "form-control my-3", :placeholder => "닉네임" %>
+      <%= f.text_field :username, :class => "form-control my-3", :placeholder => "닉네임" %>
       <%= f.password_field :password, autocomplete: "off", :class => "form-control my-3", :placeholder => @minimum_password_length.to_s+"자 이상" %>
       <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control my-3", :placeholder =>"비밀번호 확인" %>
       <%= f.submit "Sign up", :class => "btn btn-lg btn-primary btn-block my-3" %>
