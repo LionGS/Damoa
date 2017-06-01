@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523012256) do
+ActiveRecord::Schema.define(version: 20170531165807) do
 
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "tag_id"
@@ -35,19 +35,6 @@ ActiveRecord::Schema.define(version: 20170523012256) do
     t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
-  end
-
-  create_table "totalpost", primary_key: "post_no", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text    "source",      limit: 65535
-    t.text    "attribute",   limit: 65535
-    t.text    "title",       limit: 65535
-    t.text    "link",        limit: 65535
-    t.text    "mydate",      limit: 65535
-    t.integer "hits"
-    t.integer "recommened"
-    t.text    "last_update", limit: 65535
-    t.integer "popurarity"
-    t.text    "posttext",    limit: 65535
   end
 
   create_table "totalposts", primary_key: "post_no", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,8 +63,10 @@ ActiveRecord::Schema.define(version: 20170523012256) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
 end

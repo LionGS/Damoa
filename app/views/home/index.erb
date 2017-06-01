@@ -14,7 +14,7 @@
       <td><%=@post_no%></td>
       <td><a href="<%=post.link%>"><%=truncate post.title, length: 30%></a></td>
       <td><%= truncate post.posttext, length: 60 %></td>
-      <td><%= post.source %>#<%= post.post_attribute%></td>
+      <td><%= post.post_attribute%></td>
       <td><%= post.popurarity %></td>
     </tr>
     <%@post_no = @post_no+1%>

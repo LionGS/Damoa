@@ -42,7 +42,11 @@
           </div>
 
           <div class="jumbotron">
-            <h1 class="display-3">Damoa에 오신것을 환영합니다.</h1>
+            <% if user_signed_in? %>
+              <h1 class="display-3"><%=current_user.username%>님을 환영합니다.</h1>
+            <% else %>
+              <h1 class="display-3">Damoa에 오신것을 환영합니다.</h1>
+            <% end %>
             <p class="lead">다모아는 여러분에게 맞는 게시물들을 자동으로 찾아서 보여드립니다.</p>
           </div>
 
