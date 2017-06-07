@@ -8,4 +8,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :current_password
+  validates_uniqueness_of :username
 end
