@@ -5,10 +5,10 @@ class CreateTotalposts < ActiveRecord::Migration[5.0]
       t.text    "post_attribute", limit: 65535
       t.text    "title",          limit: 65535
       t.text    "link",           limit: 65535
-      t.text    "mydate",         limit: 65535
+      t.datetime    "mydate"
       t.integer "hits"
       t.integer "recommened"
-      t.text    "last_update",    limit: 65535
+      t.datetime    "last_update"
       t.integer "popurarity"
       t.text    "posttext",       limit: 65535
     end

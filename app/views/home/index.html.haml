@@ -1,0 +1,23 @@
+
+.row
+  .col
+    .h1
+      %button.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
+        오늘의 인기 게시물
+    #accordion{"aria-multiselectable" => "true", :role => "tablist"}
+      =render 'data', posts: @today_popular_posts
+  .col
+    .h1
+      이번주 인기 게시물
+    #accordion{"aria-multiselectable" => "true", :role => "tablist"}
+      =render 'data', posts: @this_week_popular_posts
+.row
+  .col
+    .h1
+      당신을 위한 맞춤 게시물
+    #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
+      =render 'data', posts: @posts
+-#.row
+-#  .col
+-#    %p.pagination
+-#      =link_to_next_page(@posts, 'Next Page', :remote => true)
