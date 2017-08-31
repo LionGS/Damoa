@@ -1,23 +1,28 @@
 class HomeController < ApplicationController
   def index
-    # @posts = Totalpost.order("popurarity DESC").limit(20)
-
     if user_signed_in? && current_user.tag_list.size > 0
-      @posts = Array.new
-      current_user.tag_list.each do |tag|
-        Totalpost.where(["title LIKE ? or posttext LIKE ?", "%#{tag}%", "%#{tag}%"]).each do |post|
-          @posts.push(post)
-        end
-        # Totalpost.where(["posttext LIKE ?", "%#{tag}%"]).each do |post|
-        #   @posts.push(post)
-        # end
+      @posts = Totalpost.search do
+        fulltext current_user.tag_list
+        order_by :popurarity, :desc
+        paginate :page => params[:page], :per_page => 20
       end
-      @posts.sort_by! {|post| post.popurarity}.reverse!
-      @posts = @posts.first(20)
     else
-      @posts = Totalpost.order("popurarity DESC").limit(20)
+      @posts = Totalpost.search do
+        fulltext current_user.tag_list
+        order_by :popurarity, :desc
+        paginate :page => params[:page], :per_page => 20
+      end
     end
-
-    @post_no = 1
+    @today_popular_posts = Totalpost.search do
+      with(:mydate).greater_than 1.day.ago
+      order_by :popurarity, :desc
+      paginate :page => params[:page], :per_page => 5
+    end
+    @this_week_popular_posts = Totalpost.search do
+      with(:mydate).greater_than 1.month.ago
+      with(:mydate).less_than 1.day.ago
+      order_by :popurarity, :desc
+      paginate :page => params[:page], :per_page => 5
+    end
   end
 end

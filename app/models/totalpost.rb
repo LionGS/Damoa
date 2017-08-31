@@ -1,5 +1,5 @@
 class Totalpost < ApplicationRecord
-  def self.dedupe
+  def self.dedupe 
     # find all models and group them on keys which should be common
     grouped = all.group_by{|model| [model.title,model.posttext,model.source] }
     grouped.values.each do |duplicates|
@@ -9,5 +9,11 @@ class Totalpost < ApplicationRecord
       # so delete all of them
       duplicates.each{|double| double.destroy} # duplicates can now be destroyed
     end
+  end
+
+  searchable do
+    text :title, :posttext
+    integer :popurarity
+    time :mydate
   end
 end
