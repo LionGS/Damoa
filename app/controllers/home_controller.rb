@@ -8,7 +8,6 @@ class HomeController < ApplicationController
       end
     else
       @posts = Totalpost.search do
-        fulltext current_user.tag_list
         order_by :popurarity, :desc
         paginate :page => params[:page], :per_page => 20
       end
