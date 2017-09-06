@@ -13,6 +13,8 @@
  */
 
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "http://fonts.googleapis.com/earlyaccess/nanumgothic.css";
 
 * {
@@ -21,7 +23,6 @@
   list-decoration: none;
   link-decoration: none;
 }
-
 .navbar-brand {
   font-size: 50px;
 }
