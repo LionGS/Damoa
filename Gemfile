@@ -69,3 +69,4 @@ gem 'progress_bar'
 
 
 gem 'figaro'
+gem 'font-awesome-sass'

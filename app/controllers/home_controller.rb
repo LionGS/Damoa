@@ -2,7 +2,9 @@ class HomeController < ApplicationController
   def index
     if user_signed_in? && current_user.tag_list.size > 0
       @posts = Totalpost.search do
-        fulltext current_user.tag_list
+        fulltext current_user.tag_list.to_s do
+          minimum_match 1
+        end
         order_by :popurarity, :desc
         paginate :page => params[:page], :per_page => 20
       end
@@ -15,13 +17,13 @@ class HomeController < ApplicationController
     @today_popular_posts = Totalpost.search do
       with(:mydate).greater_than 1.day.ago
       order_by :popurarity, :desc
-      paginate :page => params[:page], :per_page => 5
+      paginate :page => 1, :per_page => 5
     end
     @this_week_popular_posts = Totalpost.search do
       with(:mydate).greater_than 1.month.ago
       with(:mydate).less_than 1.day.ago
       order_by :popurarity, :desc
-      paginate :page => params[:page], :per_page => 5
+      paginate :page => 1, :per_page => 5
     end
   end
 end
