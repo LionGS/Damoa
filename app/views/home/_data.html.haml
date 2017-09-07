@@ -1,17 +1,14 @@
 
 - posts.each_hit_with_result do |hit, post|
-  .card
-    .card-header{:role => "tab",:id => "heading-#{post.id}"}
-      %h5.mb-0.d-flex.justify-content-between
-        %a{:href => "#{post.link}"}
+  .card.back-tp
+    .card-header.back-tp{:role => "tab",:id => "heading-#{post.id}"}
+      %h5.mb-2.d-flex.justify-content
+        %a.ft-cb{:href => "#{post.link}"}
           =truncate post.title, length: 50
         %div
-          -#%a.btn.btn-secondary{"aria-controls" => "collapse-#{post.id}",  "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse-#{post.id}"}
-          -#  더보기
           -unless hit.score.nil?
             %p
               =score_to_star hit.score, post.popurarity
-              =post.popurarity
-    -#.collapse{"aria-labelledby" => "heading-#{post.id}", :role => "tabpanel", :id => "collapse-#{post.id}","aria-expanded" => "false"}
-    -#  .card-block
-    -#    =post.posttext
+    .collapse{"aria-labelledby" => "heading-#{post.id}", :role => "tabpanel", :id => "collapse-#{post.id}","aria-expanded" => "false"}
+      .card-block
+        =post.posttext
