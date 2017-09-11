@@ -3,9 +3,9 @@ $("<%=j render 'data', posts: @posts %>")
     .appendTo($("#infinite_scroll"));
 
 // Update pagination link
-<% if @posts.last_page? %>
+<% if @posts.results.last_page? %>
 $('.pagination').html("That's all, folks!");
 <% else %>
 $('.pagination')
-    .html("<%=j link_to_next_page(@posts, 'Next Page', :remote => true) %>");
+    .html("<%=j link_to_next_page(@posts.results, 'Next Page', :remote => true) %>");
 <% end %>
