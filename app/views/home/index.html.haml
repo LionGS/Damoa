@@ -2,13 +2,13 @@
 .row.py-5
   .col.ct
     .h1
-      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l1", "aria-expanded" => "false", "aria-controls" =>"accordion", "onclick"=>"#accordion","href"=>"#collapse1"}
+      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l1", "aria-expanded" => "false", "aria-controls" =>"accordion"}
         오늘의 인기 게시물
-    #accordion.l1.btn-tp{"aria-multiselectable" => "true", :role => "tablist"}
+    #accordion.collapse.l1{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @today_popular_posts
   .col
     .h1
-      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l2", "aria-expanded" => "false", "aria-controls" =>"accordion", "onclick" => "style display: inline-block"}
+      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l2", "aria-expanded" => "false", "aria-controls" =>"accordion"}
         이번주 인기 게시물
     #accordion.collapse.l2{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @this_week_popular_posts
