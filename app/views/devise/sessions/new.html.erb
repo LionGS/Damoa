@@ -1,5 +1,5 @@
 <%= devise_error_messages! %>
-<div class="container col-6">
+<div class="container col-6 py-3">
   <h2>Log in</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
     <%= f.label :email, :class => "sr-only" %>

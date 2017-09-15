@@ -1,7 +1,7 @@
 = devise_error_messages!
 
 / 탭
-%ul.nav.nav-pills{:role => "tablist"}
+%ul.nav.nav-pills.py-3.info-mfd{:role => "tablist"}
   %li.nav-item
     %a.nav-link.active{"data-toggle" => "tab", :href => "#tags_edit", :role => "tab"} 태그 수정
   %li.nav-item
@@ -11,7 +11,7 @@
 
 
 / 탭 패널
-.tab-content
+.tab-content.tran.py-3
   #tags_edit.tab-pane.active{:role => "tabpanel"}
     .container.col-6
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|

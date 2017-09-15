@@ -15,6 +15,9 @@
 @import "bootstrap";
 @import "http://fonts.googleapis.com/earlyaccess/nanumgothic.css";
 
+/*******************************************
+DEFALT
+*******************************************/
 * {
   font-family: nanumgothic;
   text-decoration: none;
@@ -125,6 +128,9 @@ MENU
 .current_page_item:hover{
   text-decoration: none;
 }
+.info-mfd{
+  margin-left: 26%;
+}
 /***********************************************
 WRAPPER
 ***********************************************/
@@ -135,6 +141,9 @@ WRAPPER
   margin: auto;
   width: 1000px;
 }
+/************************************************
+Object
+************************************************/
 .navbar-brand {
   font-size: 50px;
 }
@@ -198,6 +207,3 @@ WRAPPER
 .btn-hv:hover{
   background-color: white;
 }
-// .footer{
-//   margin-top:100px;
-// }
