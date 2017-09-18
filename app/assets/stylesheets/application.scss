@@ -13,7 +13,191 @@
  */
 
 @import "bootstrap";
+@import "http://fonts.googleapis.com/earlyaccess/nanumgothic.css";
 
+* {
+  font-family: nanumgothic;
+  text-decoration: none;
+  list-decoration: none;
+  link-decoration: none;
+}
+
+body{
+  margin: 0px;
+	padding: 0px;
+	background: #3D3D3D;
+	font-size: 11pt;
+	font-weight: 300;
+	color: #6c6c6c
+}
+/********************************************
+HEADER
+********************************************/
+.header-wrapper{
+  overflow: hidden;
+	padding: 5em 0em 0em 0em;
+	background: #FFC000 url(images/overlay.png) repeat;
+}
+.header-container{
+  margin: 0px auto;
+	width: 1200px;
+}
+.logo{
+  padding: 5em 0em;
+	text-align: center;
+}
+.logo-damoa{
+  font-weight:600;
+  text-decoration: none;
+	color: #FFF;
+	text-decoration:none;
+}
+.logo-damoa:hover{
+  color:#FFF;
+  text-decoration:none;
+}
+.triangle-top{
+  margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-left: 60px solid transparent;
+	border-right: 60px solid transparent;
+	border-bottom: 30px solid #3D3D3D;
+}
+.trigger{
+  transform: rotate(-20deg);
+  width: 150px;
+  height: 150px;
+  border: 20px solid #999;
+  background: #ddd;
+}
+.box{
+  display: inline-block;
+  background: pink;
+  width: 150px;
+  height: 150px;
+  transition: transform 300ms ease-in-out;
+}
+.cen:hover .trigger .box{
+  transform: translate(150px,100px) rotate(30deg);
+}
+.pos{
+  position: relative;
+  margin: auto;
+  padding: auto;
+}
+.pos1{
+  position: absolute;
+  z-index: 2;
+}
+.pos2{
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  margin-left: 10%;
+}
+.cen{
+  margin: auto;
+  width: 270px;
+  height: 120px;
+  margin-left: 27%;
+  // padding-bottom: auto;
+}
+/***********************************************
+MENU
+***********************************************/
+.menu-wrapper{
+  background: #3D3D3D;
+}
+.menu{
+  margin: 0px auto;
+}
+.menu ul{
+  text-align: center;
+  list-style: none;
+}
+.menu li{
+  display: inline-block;
+}
+.current_page_item{
+  color: #FFF;
+}
+.current_page_item:hover{
+  text-decoration: none;
+}
+/***********************************************
+WRAPPER
+***********************************************/
+.wrapper{
+  background-color: #FFF;
+}
+.wrapper-main{
+  margin: auto;
+  width: 1000px;
+}
 .navbar-brand {
   font-size: 50px;
 }
+.underbar{
+    border-top:1px solid gray;
+}
+.accordion{
+  background-image: url(bgi.jpg) ; background-attachment: fixed;
+}
+.fs-5{
+  margin:auto;
+  font-size:5rem;
+}
+.rt{
+  position:absolute;
+  right:0;
+}
+.rap{
+  width:1200px;
+  margin:auto;
+}
+.btn-tp{
+  background-color: transparent;
+   background-image: none;
+  // border-color: transparent;
+  // border: 1px solid yellow;
+   color: #000000; 
+   font-size:2rem;
+   border-radius:15px;
+   width:100%;
+   margin:auto;
+}
+.btn-tp:hover{
+  background-color : white;
+}
+.ct{
+  margin:auto;
+}
+.back-tp{
+  background-color: white !important;
+  background-image:none;
+  border-bottom:0.5px solid gray !important;
+  border-top:0px !important;
+  border-left:0px !important;
+  border-right:0px !important;
+  border-radius:40px !important;
+  
+}
+.ft-cb{
+  color:black !important;
+}
+.ft-cb:hover{
+  color:#3fb892 !important;
+  text-decoration: none;
+}
+.userTitle {
+  text-align: center;
+  margin-bottom:50px;
+}
+
+.btn-hv:hover{
+  background-color: white;
+}
+// .footer{
+//   margin-top:100px;
+// }

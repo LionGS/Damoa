@@ -19,5 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-/solr
+
+# Ignore application configuration
+/config/application.yml
+
 /.idea
+/solr

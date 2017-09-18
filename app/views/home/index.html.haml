@@ -1,20 +1,21 @@
 
-.row
-  .col
+.row.py-5
+  .col.ct
     .h1
-      %button.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
+      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l1", "aria-expanded" => "false", "aria-controls" =>"accordion"}
         오늘의 인기 게시물
-    #accordion{"aria-multiselectable" => "true", :role => "tablist"}
+    #accordion.collapse.l1{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @today_popular_posts
   .col
     .h1
-      이번주 인기 게시물
-    #accordion{"aria-multiselectable" => "true", :role => "tablist"}
+      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l2", "aria-expanded" => "false", "aria-controls" =>"accordion"}
+        이번주 인기 게시물
+    #accordion.collapse.l2{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @this_week_popular_posts
 .row
   .col
     .h1
-      당신을 위한 맞춤 게시물
+      .userTitle 당신을 위한 맞춤 게시물
     #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @posts
 -#.row
