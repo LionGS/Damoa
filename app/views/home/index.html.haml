@@ -18,7 +18,5 @@
       .userTitle 당신을 위한 맞춤 게시물
     #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @posts
--#.row
--#  .col
--#    %p.pagination
--#      =link_to_next_page(@posts, 'Next Page', :remote => true)
+    %p.pagination
+      =link_to_next_page @posts.results, 'Next Page', :remote => true
