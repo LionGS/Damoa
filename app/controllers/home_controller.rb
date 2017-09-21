@@ -6,12 +6,12 @@ class HomeController < ApplicationController
           minimum_match 1
         end
         order_by :popurarity, :desc
-        paginate :page => params[:page], :per_page => 20
+        paginate :page => params[:page], :per_page => 30
       end
     else
       @posts = Totalpost.search do
         order_by :popurarity, :desc
-        paginate :page => params[:page], :per_page => 20
+        paginate :page => params[:page], :per_page => 30
       end
     end
     @today_popular_posts = Totalpost.search do
