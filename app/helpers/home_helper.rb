@@ -28,4 +28,14 @@ module HomeHelper
     end
     result.html_safe
   end
+
+  def source_img(source)
+    img = case source
+            when "ruli" then "ruli.png"
+            when "dcinside" then "dcinside.png"
+            when "humoruniv" then "humoruniv.png"
+            when "clien" then "clien.png"
+          end
+    image_tag img,class: "img-thumbnail",style: "max-height:50px;"
+  end
 end

@@ -3,6 +3,7 @@
   .card.back-tp
     .card-header.back-tp{:role => "tab",:id => "heading-#{post.id}"}
       %h5.mb-2.d-flex.justify-content
+        =source_img post.source
         %a.ft-cb{:href => "#{post.link}"}
           =truncate post.title, length: 50
         %div
