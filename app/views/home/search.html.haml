@@ -1,0 +1,9 @@
+
+.row.py-5
+  .col
+    .h1
+      .userTitle 검색결과
+    #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
+      =render 'data', posts: @results
+    %p.pagination
+      =link_to_next_page @results.results, 'Next Page', :remote => true
