@@ -26,4 +26,23 @@ class HomeController < ApplicationController
       paginate :page => 1, :per_page => 5
     end
   end
+
+  def data_input
+
+  end
+
+  def search
+    q = params[:q]
+    @q = q
+
+    unless q.blank?
+      @results = Totalpost.search do
+        fulltext q do
+          minimum_match 1
+        end
+        order_by :popurarity, :desc
+        paginate :page => params[:page], :per_page => 30
+      end
+    end
+  end
 end

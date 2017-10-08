@@ -53,6 +53,14 @@
               <% end %>
             </h3>
           </li>
+          <li class="nav-item my-3">
+            <h3>
+              <%= form_tag("/search", method: "get") do %>
+                <%= text_field_tag(:q) %>
+                <%= submit_tag("Search", class: "btn btn-outline-success my-2 my-sm-0") %>
+              <% end %>
+            </h3>
+          </li>
         </ul>
       </div>
     </div>
