@@ -6,7 +6,7 @@
         =source_img post.source
         %a.ft-cb{:href => "#{post.link}"}
           =truncate post.title, length: 50
-        %div
+        %div.starposition
           -unless hit.score.nil?
             %p
               =score_to_star hit.score, post.popurarity

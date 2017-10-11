@@ -181,11 +181,14 @@ WRAPPER
   border-top:0px !important;
   border-left:0px !important;
   border-right:0px !important;
-  border-radius:40px !important;
-  
+  max-height: 70px;
+  // border-radius:40px !important;
 }
 .ft-cb{
   color:black !important;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 3%;
 }
 .ft-cb:hover{
   color:#3fb892 !important;
@@ -198,6 +201,22 @@ WRAPPER
 
 .btn-hv:hover{
   background-color: white;
+}
+.search-btn{
+  position: absolute;
+  left: 57%;
+}
+.starposition{
+  position: absolute;
+  left: 88%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.navposition{
+  margin-right: 27%;
+}
+.tabposition{
+  padding-bottom: 3%;
 }
 // .footer{
 //   margin-top:100px;
