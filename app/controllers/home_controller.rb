@@ -45,4 +45,8 @@ class HomeController < ApplicationController
       end
     end
   end
+
+  def show
+
+  end
 end

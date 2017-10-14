@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   attr_accessor :current_password
   validates_uniqueness_of :username
+  has_many :histories
 end

@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531165807) do
+ActiveRecord::Schema.define(version: 20171014035940) do
 
-  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.integer  "totalpost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["totalpost_id"], name: "index_histories_on_totalpost_id", using: :btree
+    t.index ["user_id"], name: "index_histories_on_user_id", using: :btree
+  end
+
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
     t.integer  "taggable_id"
@@ -31,26 +40,27 @@ ActiveRecord::Schema.define(version: 20170531165807) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   end
 
-  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "totalposts", primary_key: "post_no", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text    "source",         limit: 65535
-    t.text    "post_attribute", limit: 65535
-    t.text    "title",          limit: 65535
-    t.text    "link",           limit: 65535
-    t.text    "mydate",         limit: 65535
-    t.integer "hits"
-    t.integer "recommened"
-    t.text    "last_update",    limit: 65535
-    t.integer "popurarity"
-    t.text    "posttext",       limit: 65535
+  create_table "totalposts", primary_key: "post_no", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "source",         limit: 50,    collation: "utf8_general_ci"
+    t.string   "post_attribute", limit: 50,    collation: "utf8_general_ci"
+    t.text     "title",          limit: 65535
+    t.string   "link",                         collation: "utf8_general_ci"
+    t.datetime "mydate"
+    t.integer  "hits"
+    t.integer  "recommened"
+    t.datetime "last_update"
+    t.integer  "popurarity"
+    t.text     "posttext",       limit: 65535
+    t.index ["link"], name: "idx_link", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
