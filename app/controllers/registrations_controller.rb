@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def update
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
-    @user = User.find(current_user.id)
+    @user = User.find current_user
     if needs_password?
       successfully_updated = @user.update_with_password(account_update_params)
     else
@@ -9,6 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
       account_update_params.delete('password_confirmation')
       account_update_params.delete('current_password')
       successfully_updated = @user.update_attributes(account_update_params)
+      @user.tag_update_date = DateTime.now
+      @user.save
     end
 
     if successfully_updated

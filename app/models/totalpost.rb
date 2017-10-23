@@ -1,5 +1,6 @@
 class Totalpost < ApplicationRecord
   has_many :histories
+  has_many :recommend_posts
   def self.dedupe 
     # find all models and group them on keys which should be common
     grouped = all.group_by{|model| [model.title,model.posttext,model.source] }

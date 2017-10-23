@@ -3,7 +3,7 @@ class TotalpostController < ApplicationController
     post = Totalpost.find params[:totalpost_id]
     History.create user: current_user, totalpost: post
 
-    redirect_to post.link
+    @link = post.link
   end
 
   def data_input

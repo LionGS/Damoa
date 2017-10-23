@@ -1,15 +1,19 @@
-
-- posts.each_hit_with_result do |hit, post|
-  .card.back-tp
-    .card-header.back-tp{:role => "tab",:id => "heading-#{post.id}"}
-      %h5.mb-2.d-flex.justify-content
-        =source_img post.source
-        %a.ft-cb{:href => "#{post.link}"}
-          =truncate post.title, length: 50
-        %div.starposition
-          -unless hit.score.nil?
-            %p
-              =score_to_star hit.score, post.popurarity
-    .collapse{"aria-labelledby" => "heading-#{post.id}", :role => "tabpanel", :id => "collapse-#{post.id}","aria-expanded" => "false"}
-      .card-block
-        =post.posttext
+-if posts
+  - posts.each_hit_with_result do |hit, post|
+    .card.back-tp
+      .card-header.back-tp{:role => "tab",:id => "heading-#{post.id}"}
+        %h5.mb-2.d-flex.justify-content
+          =source_img post.source
+          - if user_signed_in?
+            =link_to "/totalpost/show/#{post.post_no}", class:'ft-cb' do
+              =truncate post.title, length: 50
+          - else
+            %a.ft-cb{:href => "#{post.link}"}
+              =truncate post.title, length: 50
+          %div.starposition
+            -unless hit.score.nil?
+              %p
+                =score_to_star hit.score, post.popurarity
+      .collapse{"aria-labelledby" => "heading-#{post.id}", :role => "tabpanel", :id => "collapse-#{post.id}","aria-expanded" => "false"}
+        .card-block
+          =post.posttext
