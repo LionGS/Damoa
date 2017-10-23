@@ -1,0 +1,18 @@
+-if posts
+  - posts.each do |post|
+    .card.back-tp
+      .card-header.back-tp{:role => "tab",:id => "heading-#{post.totalpost.id}"}
+        %h5.mb-2.d-flex.justify-content
+          =source_img post.totalpost.source
+          - if user_signed_in?
+            =link_to "/totalpost/show/#{post.totalpost.post_no}", class:'ft-cb' do
+              =truncate post.totalpost.title, length: 50
+          - else
+            %a.ft-cb{:href => "#{post.totalpost.link}"}
+              =truncate post.totalpost.title, length: 50
+          %div.starposition
+            %p
+              =score_to_star post.point
+      .collapse{"aria-labelledby" => "heading-#{post.totalpost.id}", :role => "tabpanel", :id => "collapse-#{post.totalpost.id}","aria-expanded" => "false"}
+        .card-block
+          =post.totalpost.posttext

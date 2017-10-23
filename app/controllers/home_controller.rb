@@ -1,18 +1,29 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in? && current_user.tag_list.size > 0
-      @posts = Totalpost.search do
-        fulltext current_user.tag_list.to_s.delete "," do
-          minimum_match 1
+      if current_user.recommend_update_date < current_user.tag_update_date
+        ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
+        recommend = Totalpost.search do
+          fulltext current_user.tag_list.to_s.delete "," do
+            minimum_match 1
+          end
+          order_by :popurarity, :desc
         end
-        order_by :popurarity, :desc
-        paginate :page => params[:page], :per_page => 30
+        time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+        values = recommend.each_hit_with_result.map { |hit,post| "(#{current_user.id}, #{post.id}, #{hit.score * post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
+        # recommend.each_hit_with_result do |hit,post|
+        #   RecommendPost.create user: current_user, totalpost: post, point: hit.score * post.popurarity
+        # end
+        ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+        current_user.recommend_update_date = DateTime.now
+        current_user.save
       end
-    else
-      @posts = Totalpost.search do
-        order_by :popurarity, :desc
-        paginate :page => params[:page], :per_page => 30
-      end
+      @recommend_posts = RecommendPost.where(user_id: current_user).order(point: :desc).page(1).per(10)
+      @recommend_posts ||= RecommendPost.none
+    end
+    @posts = Totalpost.search do
+      order_by :popurarity, :desc
+      paginate :page => params[:page], :per_page => 30
     end
     @today_popular_posts = Totalpost.search do
       with(:mydate).greater_than 1.day.ago
@@ -44,5 +55,9 @@ class HomeController < ApplicationController
         paginate :page => params[:page], :per_page => 30
       end
     end
+  end
+
+  def show
+
   end
 end

@@ -1,6 +1,5 @@
 module HomeHelper
-  def score_to_star(hit_score,popularity)
-    total_score = hit_score * popularity
+  def score_to_star(total_score)
     result = ""
     star = "<i class='fa fa-star text-warning' aria-hidden='true'></i>"
     if total_score > 50
