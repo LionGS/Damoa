@@ -53,6 +53,13 @@
               <% end %>
             </h3>
           </li>
+          <% if user_signed_in? %>
+            <li class="nav-item my-3">
+              <h3>
+                <%= link_to "히스토리", history_index_path, class: current_page?(history_index_path) ? 'current_page_item' : 'nav-link' %>
+              </h3>
+            </li>
+          <% end %>
           <li class="nav-item my-3">
             <h3>
               <%= link_to "도움말"%>
