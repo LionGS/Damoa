@@ -13,13 +13,13 @@
 / 탭 패널
 .tab-content.tabposition
   #tags_edit.tab-pane.active{:role => "tabpanel"}
-    .container.col-6
+    .container.col-6.py-3
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.label :tag_list, "관심 키워드"
         = f.text_area :tag_list, value: resource.tag_list.join(", ") ,:class => "form-control mb-3", :rows => "5"
         = f.submit "수정완료", :class => "btn btn-lg btn-primary btn-block my-3"
   #password_edit.tab-pane{:role => "tabpanel"}
-    .container.col-6
+    .container.col-6.py-3
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.label :password,"현재 비밀번호"
         = f.password_field :current_password, autocomplete: "off", :class => "form-control my-3"
@@ -33,5 +33,5 @@
         = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control my-3"
         = f.submit "수정완료", :class => "btn btn-lg btn-primary btn-block my-3"
   #user_edit.tab-pane{:role => "tabpanel"}
-    .container.col-6
+    .container.col-6.py-3
       = button_to "회원탈퇴", registration_path(resource_name), data: { confirm: "정말 탈퇴하시겠습니까? 모든 정보는 소멸됩니다." }, method: :delete , class: "btn btn-lg btn-danger btn-block my-3"
