@@ -1,5 +1,9 @@
 
-.row.py-5
+.row.py-1
+  %h3.search-btn.pd-b
+    = form_tag("/search", method: "get") do
+      = text_field_tag(:q)
+      = submit_tag("Search", class: "btn btn-outline-success my-2 mytag")
   .col.ct
     .h1
       %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l1", "aria-expanded" => "false", "aria-controls" =>"accordion"}
@@ -16,6 +20,10 @@
   .col
     .h1
       .userTitle 당신을 위한 맞춤 게시물
+    .border-header 
+      .source 출처
+      .border_title 제목
+      .grade 평점
     #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @posts
     %p.pagination

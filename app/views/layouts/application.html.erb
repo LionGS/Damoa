@@ -11,6 +11,9 @@
     <div class="header-wrapper">
       <div class="header-container">
         <div class="logo">
+          <div class="text">
+  
+          </div>
           <div class="navbar navbar-toggleable-md navbar-light pos">
             <div class="cen">
               <%= link_to "Damoa", root_path, class: 'fs-5 logo-damoa pos1' %>
@@ -64,13 +67,17 @@
 
     <div class="wrapper">
       <div class="wrapper-main">
-         <h3 class = "search-btn py-1">
-          <%= form_tag("/search", method: "get") do %>
-            <%= text_field_tag(:q) %>
-            <%= submit_tag("Search", class: "btn btn-outline-success my-2 my-sm-0") %>
-          <% end %>
-        </h3>
+        <!-- <h3 class = "search-btn py-1">-->
+        <!--  <%= form_tag("/search", method: "get") do %>-->
+        <!--    <%= text_field_tag(:q) %>-->
+        <!--    <%= submit_tag("Search", class: "btn btn-outline-success my-2 mytag") %>-->
+        <!--  <% end %>-->
+        <!--</h3>-->
+        <!--my-sm-0-->
         <%= yield %>
+        <span class="remotecon glyphicon glyphicon-menu-up" aria-hidden="true">
+          
+        </span>
       </div>
     </div>
     <footer class="footer center">

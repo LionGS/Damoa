@@ -83,6 +83,7 @@ HEADER
   transform: translate(150px,100px) rotate(30deg);
 }
 .pos{
+  // float: right;
   position: relative;
   margin: auto;
   padding: auto;
@@ -136,6 +137,11 @@ WRAPPER
   margin: auto;
   width: 1000px;
 }
+.remotecon{
+  position: fixed;
+  right: 1150px;
+  // bottom: ;
+}
 .navbar-brand {
   font-size: 50px;
 }
@@ -167,6 +173,7 @@ WRAPPER
    border-radius:15px;
    width:100%;
    margin:auto;
+   margin-top: 9%;
 }
 .btn-tp:hover{
   background-color : white;
@@ -213,11 +220,35 @@ WRAPPER
   margin-bottom: auto;
 }
 .navposition{
-  margin-right: 27%;
+  margin-left: 26%;
 }
 .tabposition{
   padding-bottom: 3%;
 }
+.mytag{
+  margin-top : 0px !important;
+  margin-bottom : 8px !important;
+}
 // .footer{
 //   margin-top:100px;
 // }
+/****************************************
+BORDER
+****************************************/
+.border-header{
+  display: flex;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.source{
+  margin-left: 4%;
+}
+.border_title{
+  margin-left: 12%;
+}
+.grade{
+  margin-left: 69%;
+}
+.pd-b{
+  // padding-bottom:;
+}
