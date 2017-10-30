@@ -1,6 +1,12 @@
 class Totalpost < ApplicationRecord
+  include SearchCop
   has_many :histories
   has_many :recommend_posts
+  paginates_per 50
+  search_scope :search do
+    attributes :source, :title, :posttext, :post_attribute
+  end
+
   def self.dedupe 
     # find all models and group them on keys which should be common
     grouped = all.group_by{|model| [model.title,model.posttext,model.source] }
@@ -11,11 +17,5 @@ class Totalpost < ApplicationRecord
       # so delete all of them
       duplicates.each{|double| double.destroy} # duplicates can now be destroyed
     end
-  end
-
-  searchable do
-    text :title, :posttext
-    integer :popurarity
-    time :mydate
   end
 end

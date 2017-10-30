@@ -63,10 +63,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
-gem 'sunspot_rails'
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-gem 'progress_bar'
-
-
 gem 'figaro'
 gem 'font-awesome-sass'
+
+gem 'search_cop'

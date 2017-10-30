@@ -16,7 +16,7 @@
   .col
     .h1
       .userTitle 당신을 위한 맞춤 게시물
-    #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
+    #recommend{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'recommend_post', posts: @recommend_posts
 .row
   .col
@@ -25,4 +25,4 @@
     #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
       =render 'data', posts: @posts
     %p.pagination
-      =link_to_next_page @posts.results, 'Next Page', :remote => true
+      =link_to_next_page @posts, 'Next Page', :remote => true
