@@ -16,7 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/solr/*
+/public
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -25,4 +25,3 @@
 /config/application.yml
 
 /.idea
-/solr

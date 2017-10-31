@@ -1,6 +1,12 @@
 <!--<!DOCTYPE html>-->
 <!--<html>-->
   <!--<head>-->
+    <!--<title>Damoa</title>-->
+    <!--<%= csrf_meta_tags %>-->
+
+    <!--<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
+    <!--<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+
   <!--</head>-->
   <!--<body>-->
     <!--<div class="header-wrapper">-->
@@ -81,6 +87,7 @@
 
   <!--</body>-->
 <!--</html>-->
+
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -89,17 +96,13 @@
 -->
 <html>
 <head>
-  <title>Damoa</title>
+  <title>Editorial by HTML5 UP</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <!--[if lte IE 8]><%=javascript_include_tag "ie/html5shiv" %><![endif]-->
-  <%= stylesheet_link_tag "main" %>
-  <!--[if lte IE 9]><%= stylesheet_link_tag "ie9" %><![endif]-->
-  <!--[if lte IE 8]><%= stylesheet_link_tag "ie8" %><![endif]-->
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!--[if lte IE 8]><%= javascript_include_tag "ie/html5shiv" %><![endif]-->
+  <%= stylesheet_link_tag 'main' %>
+  <!--[if lte IE 9]><%= stylesheet_link_tag 'ie9' %><![endif]-->
+  <!--[if lte IE 8]><%= stylesheet_link_tag 'ie8' %><![endif]-->
 </head>
 <body>
 
@@ -136,7 +139,7 @@
           </ul>
         </div>
         <span class="image object">
-										<%= image_tag "pic10.jpg" %>
+										<%= image_tag 'pic10.jpg' %>
 									</span>
       </section>
 
@@ -184,13 +187,51 @@
         </header>
         <div class="posts">
           <article>
-            <%= link_to '#' do %>
-                <%= image_tag "pic01.jpg", class: "image" %>
-            <% end %>
+            <a href="#" class="image"><%= image_tag 'pic01.jpg' %></a>
             <h3>Interdum aenean</h3>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
             <ul class="actions">
-              <li><%= link_to '#',"More",class: "button" %></li>
+              <li><a href="#" class="button">More</a></li>
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic02.jpg' %></a>
+            <h3>Nulla amet dolore</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button">More</a></li>
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic03.jpg' %></a>
+            <h3>Tempus ullamcorper</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button">More</a></li>
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic04.jpg' %></a>
+            <h3>Sed etiam facilis</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button">More</a></li>
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic05.jpg' %></a>
+            <h3>Feugiat lorem aenean</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button">More</a></li>
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic06.jpg' %></a>
+            <h3>Amet varius aliquam</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <li><a href="#" class="button">More</a></li>
             </ul>
           </article>
         </div>
@@ -252,9 +293,15 @@
         </header>
         <div class="mini-posts">
           <article>
-            <%= link_to '#',class: "image" do %>
-                <%= image_tag "pic07.jpg"%>
-            <% end %>
+            <a href="#" class="image"><%= image_tag 'pic07.jpg' %></a>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic08.jpg' %></a>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+          </article>
+          <article>
+            <a href="#" class="image"><%= image_tag 'pic09.jpg' %></a>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
           </article>
         </div>
@@ -288,11 +335,10 @@
 </div>
 
 <!-- Scripts -->
-<%= javascript_include_tag "jquery.min.js" %>
+<%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "skel.min" %>
 <%= javascript_include_tag "util" %>
 <!--[if lte IE 8]><%= javascript_include_tag "ie/respond.min" %><![endif]-->
 <%= javascript_include_tag "main" %>
-
 </body>
 </html>
