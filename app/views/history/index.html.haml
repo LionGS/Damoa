@@ -1,15 +1,20 @@
--@historys.each do |history|
-  -post = history.totalpost
-  .card.back-tp
-    .card-header.back-tp{:role => "tab",:id => "heading-#{post.id}"}
-      %h5.mb-2.d-flex.justify-content
-        =source_img post.source
-        - if user_signed_in?
-          =link_to "/totalpost/show/#{post.post_no}", class:'ft-cb' do
-            =truncate post.title, length: 50
-        - else
-          %a.ft-cb{:href => "#{post.link}"}
-            =truncate post.title, length: 50
-    .collapse{"aria-labelledby" => "heading-#{post.id}", :role => "tabpanel", :id => "collapse-#{post.id}","aria-expanded" => "false"}
-      .card-block
-        =post.posttext
+.table-wrapper
+  %table
+    %thead
+      %tr
+        %th 출처
+        %th 제목
+        %th 평점
+    %tbody
+      -if @historys
+        -@historys.each do |history|
+          -post = history.totalpost
+          %tr
+            %td
+              =source_img post.source
+            %td
+              =link_to "/totalpost/show/#{post.post_no}" do
+                =truncate post.title, length: 50
+            %td
+              =post.popurarity
+

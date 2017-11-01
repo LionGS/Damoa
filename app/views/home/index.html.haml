@@ -1,36 +1,9 @@
-
-.row.py-1
-  %h3.search-btn.pd-b
-    = form_tag("/search", method: "get") do
-      = text_field_tag(:q)
-      = submit_tag("Search", class: "btn btn-outline-success my-2 mytag")
-  .col.ct
-    .h1
-      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l1", "aria-expanded" => "false", "aria-controls" =>"accordion"}
-        오늘의 인기 게시물
-    #accordion.collapse.l1{"aria-multiselectable" => "true", :role => "tablist"}
-      =render 'data', posts: @today_popular_posts
-  .col
-    .h1
-      %button.btn.btn-tp{:type => "button", "data-toggle" => "collapse", "data-target" => ".l2", "aria-expanded" => "false", "aria-controls" =>"accordion"}
-        이번주 인기 게시물
-    #accordion.collapse.l2{"aria-multiselectable" => "true", :role => "tablist"}
-      =render 'data', posts: @this_week_popular_posts
-.row
-  .col
-    .h1
-      .userTitle 당신을 위한 맞춤 게시물
-    .border-header 
-      .source 출처
-      .border_title 제목
-      .grade 평점
-    #recommend{"aria-multiselectable" => "true", :role => "tablist"}
-      =render 'recommend_post', posts: @recommend_posts
-.row
-  .col
-    .h1
-      .userTitle 인기 게시물
-    #infinite_scroll{"aria-multiselectable" => "true", :role => "tablist"}
-      =render 'data', posts: @posts
-    %p.pagination
-      =link_to_next_page @posts, 'Next Page', :remote => true
+.table-wrapper
+  %table
+    %thead
+      %tr
+        %th 출처
+        %th 제목
+        %th 평점
+    %tbody#infinite_scroll
+      =render 'data',posts: @posts

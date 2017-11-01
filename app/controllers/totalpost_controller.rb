@@ -1,7 +1,9 @@
 class TotalpostController < ApplicationController
   def show
     post = Totalpost.find params[:totalpost_id]
-    History.create user: current_user, totalpost: post
+    if signed_in?
+      History.create user: current_user, totalpost: post
+    end
 
     @link = post.link
   end

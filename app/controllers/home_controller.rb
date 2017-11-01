@@ -21,11 +21,11 @@ class HomeController < ApplicationController
 
   end
 
-  def show
-
+  def recommend
+    @posts = RecommendPost.where(user_id: current_user)
   end
 
-  def test
+  def intro
 
   end
 end
