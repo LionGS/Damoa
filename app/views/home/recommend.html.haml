@@ -1,0 +1,15 @@
+-if @posts
+  .posts
+    -@posts.each do |recommend|
+      -post = recommend.totalpost
+      %article
+        =link_to "/totalpost/show/#{post.post_no}" do
+          = post_img post
+        %h3
+          =post.title
+        %p
+          =truncate post.posttext, length: 100
+        %ul.actions
+          %li
+            %a.button{:href => "#"} 좋아요
+            %a.button{:href => "#"} 실어요

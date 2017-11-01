@@ -1,0 +1,18 @@
+= devise_error_messages!
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .row.uniform
+    %div{:class => "4u$"}
+      = f.label :email, :class => "4u$"
+    %div{:class => "4u$"}
+      = f.email_field :email, autofocus: true, :placeholder => "Email address"
+    %div{:class => "4u$"}
+      = f.text_field :username, :placeholder => "닉네임"
+    %div{:class => "4u$"}
+      = f.label :password
+    %div{:class => "4u$"}
+      = f.password_field :password, autocomplete: "off", :placeholder => @minimum_password_length.to_s+"자 이상"
+    %div{:class => "4u$"}
+      = f.password_field :password_confirmation, autocomplete: "off", :placeholder =>"비밀번호 확인"
+    %div{:class => "4u$"}
+      = f.submit "Sign up"
+  = render "devise/shared/links"

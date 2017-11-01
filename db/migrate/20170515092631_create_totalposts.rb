@@ -11,6 +11,7 @@ class CreateTotalposts < ActiveRecord::Migration[5.0]
       t.datetime    "last_update"
       t.integer "popurarity"
       t.text    "posttext",       limit: 65535
+      t.text "image_src",         limit: 65535
     end
   end
 end
