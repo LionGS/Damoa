@@ -2,18 +2,18 @@
 %h2 Log in
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .row.uniform
-    %div{:class => "4u$"}
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
       = f.label :email
-    %div{:class => "4u$"}
-      = f.email_field :email, autofocus: true, :class => "4u$", :placeholder => "Email address"
-    %div{:class => "4u$"}
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
+      = f.email_field :email, autofocus: true, :placeholder => "Email address"
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
       = f.label :password
-    %div{:class => "4u$"}
-      = f.password_field :password, autocomplete: "off", :class => "12u$", :placeholder => "Password"
-    %div{:class => "4u$"}
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
+      = f.password_field :password, autocomplete: "off", :placeholder => "Password"
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
       - if devise_mapping.rememberable?
         = f.check_box :remember_me
         = f.label :remember_me
-    %div{:class => "4u$"}
+    %div{:class => "4u$ 6u$(medieum) 12u$(small)"}
       = f.submit "Log in"
 = render "devise/shared/links"
