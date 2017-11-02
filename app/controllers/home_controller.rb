@@ -28,4 +28,8 @@ class HomeController < ApplicationController
   def intro
 
   end
+
+  def edit_tags
+
+  end
 end
