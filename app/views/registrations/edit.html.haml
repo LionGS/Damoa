@@ -1,0 +1,42 @@
+= devise_error_messages!
+.tabWrap
+  .box
+    .tab_Menu{:class => "12u$"}
+      %li.tabMenu.current
+        %a{:href => "#tabContent01", :class => "button"} 태그수정
+      %li.tabMenu
+        %a{:href => "#tabContent02", :class => "button"} 비밀번호 수정
+      %li.tabMenu
+        %a{:href => "#tabContent03", :class => "button"} 회원 탈퇴
+    .tab_Content_Wrap
+      #tabContent01.tabPage
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.label :tag_list, "관심 키워드"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.text_area :tag_list, value: resource.tag_list.join(", "), :rows => "5"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)", :style => "margin: 10px 0 0 0"}
+            = f.submit "수정완료", class: "special"
+      #tabContent02.tabPage
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.label :password,"현재 비밀번호"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.password_field :current_password, autocomplete: "off"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.label :password ,"새로운 비밀번호"
+            - if @minimum_password_length
+              %em
+                최소 #{@minimum_password_length}자 이상
+              %br/
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.password_field :password, autocomplete: "off"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.label :password_confirmation ,"비밀번호 확인"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)"}
+            = f.password_field :password_confirmation, autocomplete: "off"
+          %div{:class => "4u$ 6u$(medium) 12u$(small)", :style => "margin: 10px 0 0 0"}
+            = f.submit "수정완료", class: "special"
+      #tabContent03.tabPage
+        %div{:class => "12u$", :style => "margin: 10px 0 0 0"}
+          = button_to "정말로 탈퇴하고 싶습니다!!!", registration_path(resource_name), data: { confirm: "정말 탈퇴하시겠습니까? 모든 정보는 소멸됩니다." }, method: :delete, class: "special"

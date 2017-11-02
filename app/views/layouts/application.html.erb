@@ -30,11 +30,18 @@
       <header id="header">
         <a href="index.html" class="logo"><strong>Damoa</strong> by 폭풍전야</a>
         <ul class="icons">
-          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+          <% if user_signed_in? %>
+              <li>
+                <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 하시겠습니까?" } ,class: 'button small' %>
+              </li>
+          <% else %>
+              <li>
+                <%= link_to "로그인", new_user_session_path, class: 'button small' %>
+              </li>
+              <li>
+                <%= link_to "회원가입", new_user_registration_path, class: 'button small' %>
+              </li>
+          <% end %>
         </ul>
       </header>
       <section>
@@ -57,20 +64,6 @@
         </form>
       </section>
 
-      <ul class="actions small">
-        <% if user_signed_in? %>
-            <li>
-              <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 하시겠습니까?" } ,class: 'button small' %>
-            </li>
-        <% else %>
-            <li>
-              <%= link_to "로그인", new_user_session_path, class: 'button small' %>
-            </li>
-            <li>
-              <%= link_to "회원가입", new_user_registration_path, class: 'button small' %>
-            </li>
-        <% end %>
-      </ul>
 
       <!-- Menu -->
       <nav id="menu">
@@ -80,32 +73,25 @@
         <ul>
           <li><%= link_to "사이트 소개", intro_path %></li>
           <li><%= link_to "인기 게시물",root_path %></li>
-          <% if user_signed_in? %>
+          <% if user_signed_in? %> <!--로그인을 했을때만 나타나는 메뉴 -->
             <li><%= link_to "열람 기록",history_index_path %></li>
+            <li><%= link_to "즐겨찾기",edit_user_registration_path %></li>
+            <li><%= link_to "나의 정보 수정",edit_user_registration_path %></li>
           <% end %>
-          <li>
-            <span class="opener">나의 정보 설정</span>
-            <ul>
-              <li><a href="#">Lorem Dolor</a></li>
-              <li><a href="#">Ipsum Adipiscing</a></li>
-              <li><a href="#">Tempus Magna</a></li>
-              <li><a href="#">Feugiat Veroeros</a></li>
-            </ul>
-          </li>
-          <li><a href="#">라라라라라</a></li>
-          <li><a href="#">Adipiscing</a></li>
-          <li>
-            <span class="opener">Another Submenu</span>
-            <ul>
-              <li><a href="#">Lorem Dolor</a></li>
-              <li><a href="#">Ipsum Adipiscing</a></li>
-              <li><a href="#">Tempus Magna</a></li>
-              <li><a href="#">Feugiat Veroeros</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Maximus Erat</a></li>
-          <li><a href="#">Sapien Mauris</a></li>
-          <li><a href="#">Amet Lacinia</a></li>
+          <!--<li><a href="#">라라라라라</a></li>-->
+          <!--<li><a href="#">Adipiscing</a></li>-->
+          <!--<li>-->
+            <!--<span class="opener">Another Submenu</span>-->
+            <!--<ul>-->
+              <!--<li><a href="#">Lorem Dolor</a></li>-->
+              <!--<li><a href="#">Ipsum Adipiscing</a></li>-->
+              <!--<li><a href="#">Tempus Magna</a></li>-->
+              <!--<li><a href="#">Feugiat Veroeros</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <!--<li><a href="#">Maximus Erat</a></li>-->
+          <!--<li><a href="#">Sapien Mauris</a></li>-->
+          <!--<li><a href="#">Amet Lacinia</a></li>-->
         </ul>
       </nav>
 
@@ -160,7 +146,6 @@
 </div>
 
 <!-- Scripts -->
-<%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "skel.min" %>
 <%= javascript_include_tag "util" %>
 <!--[if lte IE 8]><%= javascript_include_tag "ie/respond.min" %><![endif]-->
