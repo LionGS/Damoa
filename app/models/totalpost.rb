@@ -2,6 +2,7 @@ class Totalpost < ApplicationRecord
   include SearchCop
   has_many :histories
   has_many :recommend_posts
+  acts_as_votable
   paginates_per 50
   search_scope :search do
     attributes :source, :title, :posttext, :post_attribute

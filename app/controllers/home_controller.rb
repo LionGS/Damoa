@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   end
 
   def recommend
-    @posts = RecommendPost.where(user_id: current_user)
+    @posts = RecommendPost.where(user_id: current_user).page params[:page]
   end
 
   def intro
@@ -31,5 +31,36 @@ class HomeController < ApplicationController
 
   def edit_tags
 
+  end
+
+  def like
+    @post = Totalpost.find params[:id]
+    @user = current_user
+    if @user.voted_for? @post
+      if @user.voted_as_when_voted_for @post
+        @post.unliked_by @user
+      else
+        @user.likes @post
+      end
+    else
+      @user.likes @post
+    end
+    redirect_to :back
+  end
+
+
+  def dislike
+    @post = Totalpost.find params[:id]
+    @user = current_user
+    if @user.voted_for? @post
+      if @user.voted_as_when_voted_for @post
+        @user.dislikes @post
+      else
+        @post.undisliked_by @user
+      end
+    else
+      @user.dislikes @post
+    end
+    redirect_to :back
   end
 end

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/intro' => 'home#intro'
   get '/recommend' => 'home#recommend'
   get '/edit_tags' => 'home#edit_tags'
+  get '/like/:id' => 'home#like'
+  get '/dislike/:id' => 'home#dislike'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   post "data" => "home#data_input"
