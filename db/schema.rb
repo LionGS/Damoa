@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105111634) do
+ActiveRecord::Schema.define(version: 20171105132938) do
 
   create_table "deletedusers", primary_key: "email", id: :string, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.datetime "remember_created_at"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20171105111634) do
     t.datetime "updated_at",   null: false
     t.index ["totalpost_id"], name: "index_recommend_posts_on_totalpost_id", using: :btree
     t.index ["user_id"], name: "index_recommend_posts_on_user_id", using: :btree
+  end
+
+  create_table "scraped_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "user_id"
+    t.integer  "totalpost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["totalpost_id"], name: "index_scraped_posts_on_totalpost_id", using: :btree
+    t.index ["user_id"], name: "index_scraped_posts_on_user_id", using: :btree
   end
 
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -59,9 +59,9 @@
 
       <!-- Search -->
       <section id="search" class="alt">
-        <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search" />
-        </form>
+        <%= form_tag("/search", method: "get") do %>
+          <%= text_field_tag(:q,nil,placeholder: 'Search') %>
+        <% end %>
       </section>
 
 
@@ -71,11 +71,11 @@
           <h2>Menu</h2>
         </header>
         <ul>
-          <li><%= link_to "사이트 소개", intro_path %></li>
+          <!--<li><%= link_to "사이트 소개", intro_path %></li>-->
           <li><%= link_to "인기 게시물",root_path %></li>
           <% if user_signed_in? %> <!--로그인을 했을때만 나타나는 메뉴 -->
             <li><%= link_to "열람 기록",history_index_path %></li>
-            <li><%= link_to "즐겨찾기",edit_user_registration_path %></li>
+            <li><%= link_to "즐겨찾기",scrap_index_path %></li>
             <li><%= link_to "나의 정보 수정",edit_user_registration_path %></li>
           <% end %>
           <!--<li><a href="#">라라라라라</a></li>-->

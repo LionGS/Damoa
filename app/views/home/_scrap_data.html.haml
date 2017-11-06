@@ -1,5 +1,6 @@
 -if posts
-  -posts.each do |post|
+  -posts.each do |p|
+    -post = p.totalpost
     %tr
       %td
         =source_img post.source

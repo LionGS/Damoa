@@ -15,7 +15,11 @@
               =link_to "좋아요 " + post.get_likes.size.to_s, "/like/" + post.post_no.to_s, class: current_user.liked?(post) ? 'button special' : 'button'
             -else
               =link_to "좋아요", "/like/" + post.post_no.to_s, class: "button"
+          %li
             -if post.get_dislikes.size > 0
               =link_to "싫어요 " + post.get_dislikes.size.to_s, "/dislike/" + post.post_no.to_s, class: current_user.disliked?(post) ? 'button special' : 'button'
             -else
               =link_to "싫어요", "/dislike/" + post.post_no.to_s, class: "button"
+
+-#%p.pagination
+-#  =link_to_next_page @results.results, 'Next Page', :remote => true

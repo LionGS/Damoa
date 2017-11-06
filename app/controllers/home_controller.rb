@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 
 
   def search
-
+    @results = Totalpost.search(params[:q]).page params[:page]
   end
 
   def recommend
@@ -45,7 +45,7 @@ class HomeController < ApplicationController
     else
       @user.likes @post
     end
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
 
@@ -61,6 +61,25 @@ class HomeController < ApplicationController
     else
       @user.dislikes @post
     end
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
+  end
+
+  def scrap
+    @scrap = ScrapedPost.where user_id: current_user.id
+
+    if @scrap.empty?
+      @scrap.find_by_totalpost_id params[:id]
+    end
+
+    if @scrap.empty?
+      ScrapedPost.create user_id: current_user.id, totalpost_id: params[:id]
+    else
+      @scrap.destroy @scrap.ids[0]
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def scrap_index
+    @posts = ScrapedPost.where user_id: current_user.id
   end
 end
