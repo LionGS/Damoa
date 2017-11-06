@@ -15,11 +15,7 @@
   <!--[if lte IE 8]><%= stylesheet_link_tag 'ie8' %><![endif]-->
   <%= csrf_meta_tags %>
 
-  <!-- Scripts -->
-  <%= javascript_include_tag "skel.min" %>
-  <%= javascript_include_tag "util" %>
-  <!--[if lte IE 8]><%= javascript_include_tag "ie/respond.min" %><![endif]-->
-  <%= javascript_include_tag "main" %>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
@@ -150,6 +146,10 @@
   </div>
 
 </div>
-
+<!-- Scripts -->
+<%= javascript_include_tag "skel.min" %>
+<%= javascript_include_tag "util" %>
+<!--[if lte IE 8]><%= javascript_include_tag "ie/respond.min" %><![endif]-->
+<%= javascript_include_tag "main" %>
 </body>
 </html>
