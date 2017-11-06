@@ -63,3 +63,4 @@ gem 'figaro'
 gem 'font-awesome-sass'
 
 gem 'search_cop'
+gem 'acts_as_votable', '~> 0.11.1'

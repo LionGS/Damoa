@@ -18,11 +18,11 @@ class HomeController < ApplicationController
 
 
   def search
-
+    @results = Totalpost.search(params[:q]).page params[:page]
   end
 
   def recommend
-    @posts = RecommendPost.where(user_id: current_user)
+    @posts = RecommendPost.where(user_id: current_user).page params[:page]
   end
 
   def intro
@@ -31,5 +31,55 @@ class HomeController < ApplicationController
 
   def edit_tags
 
+  end
+
+  def like
+    @post = Totalpost.find params[:id]
+    @user = current_user
+    if @user.voted_for? @post
+      if @user.voted_as_when_voted_for @post
+        @post.unliked_by @user
+      else
+        @user.likes @post
+      end
+    else
+      @user.likes @post
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+
+  def dislike
+    @post = Totalpost.find params[:id]
+    @user = current_user
+    if @user.voted_for? @post
+      if @user.voted_as_when_voted_for @post
+        @user.dislikes @post
+      else
+        @post.undisliked_by @user
+      end
+    else
+      @user.dislikes @post
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def scrap
+    @scrap = ScrapedPost.where user_id: current_user.id
+
+    if @scrap.empty?
+      @scrap.find_by_totalpost_id params[:id]
+    end
+
+    if @scrap.empty?
+      ScrapedPost.create user_id: current_user.id, totalpost_id: params[:id]
+    else
+      @scrap.destroy @scrap.ids[0]
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def scrap_index
+    @posts = ScrapedPost.where user_id: current_user.id
   end
 end
