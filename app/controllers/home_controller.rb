@@ -65,11 +65,7 @@ class HomeController < ApplicationController
   end
 
   def scrap
-    @scrap = ScrapedPost.where user_id: current_user.id
-
-    if @scrap.empty?
-      @scrap.find_by_totalpost_id params[:id]
-    end
+    @scrap = ScrapedPost.where user_id: current_user.id, totalpost_id: params[:id]
 
     if @scrap.empty?
       ScrapedPost.create user_id: current_user.id, totalpost_id: params[:id]
