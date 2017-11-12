@@ -73,7 +73,7 @@
           <h2>Menu</h2>
         </header>
         <ul>
-          <!--<li><%= link_to "사이트 소개", intro_path %></li>-->
+          <li><%= link_to "사이트 소개", intro_path %></li>
           <li><%= link_to "인기 게시물",root_path %></li>
           <% if user_signed_in? %> <!--로그인을 했을때만 나타나는 메뉴 -->
             <li><%= link_to "열람 기록",history_index_path %></li>
