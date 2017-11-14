@@ -16,7 +16,7 @@ module ApplicationHelper
     if post.image_src.nil?
       image_tag error_img
     else
-      image_tag post.image_src, onerror: 'this.src=' + error_img
+      image_tag post.image_src, onERROR: "this.src='" + image_path(error_img) + "'"
     end
 
   end
