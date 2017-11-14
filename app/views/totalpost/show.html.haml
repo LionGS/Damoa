@@ -1,20 +1,21 @@
 .row{:style => 'padding: 0 0 0 20px'}
   %ul.actions
-    %li
-      -if @post.get_likes.size > 0
-        =link_to "좋아요 " + @post.get_likes.size.to_s, "/like/" + @post.post_no.to_s, class: current_user.liked?(@post) ? 'button special' : 'button'
-      -else
-        =link_to "좋아요", "/like/" + @post.post_no.to_s, class: "button"
-    %li
-      -if @post.get_dislikes.size > 0
-        =link_to "싫어요 " + @post.get_dislikes.size.to_s, "/dislike/" + @post.post_no.to_s, class: current_user.disliked?(@post) ? 'button special' : 'button'
-      -else
-        =link_to "싫어요", "/dislike/" + @post.post_no.to_s, class: "button"
-    %li
-      -if @scrap.empty?
-        =link_to "즐겨찾기", "/scrap/" + @post.post_no.to_s, class: 'button'
-      -else
-        =link_to "즐겨찾기", "/scrap/" + @post.post_no.to_s, class: 'button special'
+    -if user_signed_in?
+      %li
+        -if @post.get_likes.size > 0
+          =link_to "좋아요 " + @post.get_likes.size.to_s, "/like/" + @post.post_no.to_s, class: current_user.liked?(@post) ? 'button special' : 'button'
+        -else
+          =link_to "좋아요", "/like/" + @post.post_no.to_s, class: "button"
+      %li
+        -if @post.get_dislikes.size > 0
+          =link_to "싫어요 " + @post.get_dislikes.size.to_s, "/dislike/" + @post.post_no.to_s, class: current_user.disliked?(@post) ? 'button special' : 'button'
+        -else
+          =link_to "싫어요", "/dislike/" + @post.post_no.to_s, class: "button"
+      %li
+        -if @scrap.empty?
+          =link_to "즐겨찾기", "/scrap/" + @post.post_no.to_s, class: 'button'
+        -else
+          =link_to "즐겨찾기", "/scrap/" + @post.post_no.to_s, class: 'button special'
 
 
 .row.uniform
