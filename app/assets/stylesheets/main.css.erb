@@ -3818,6 +3818,8 @@
 			color: inherit;
 			font-family: "Roboto Slab", serif;
 			font-size: 1.125em;
+			margin-left: 5%;
+ 	   		margin-right: 60%;
 		}
 
 		#header .icons {
@@ -4070,3 +4072,57 @@
 			margin-top: 0;
 			padding-top: 0;
 		}
+
+.intro-bord{
+	margin-left: 2%;
+	margin-top: 2%;
+}
+.crawling{
+	margin-top: 5%;
+}
+.intro-image{
+	display: flex;
+}
+@keyframes slider{
+	0%{
+		left: 0%;
+	}
+	20%{
+		left: 0%;
+	}
+	25%{
+		left: -100%;
+	}
+	45%{
+		left: -100%;
+	}
+	50%{
+		left: -200%;
+	}
+	70%{
+		left: -200%;
+	}
+	75%{
+		left: -300%;
+	}
+	95%{
+		left: -300%;
+	}
+	100%{
+		left: -400%;
+	}
+}
+.slider{
+	overflow: hidden;
+}
+.slider figure img{
+	width: 20%;
+	float: left;
+}
+.slider figure{
+	position: relative;
+	width: 500%;
+	margin: 0;
+	left: 0;
+	anmation: 20s slider infinite;
+}
