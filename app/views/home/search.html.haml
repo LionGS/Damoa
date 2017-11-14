@@ -7,3 +7,5 @@
         %th 평점
     %tbody#infinite_scroll
       =render 'data',posts: @results
+- unless @results.empty?
+  =paginate @results, window: 5

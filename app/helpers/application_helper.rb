@@ -1,6 +1,8 @@
+require 'net/http'
 module ApplicationHelper
   def post_img(post)
-    if post.image_src.nil?
+    res = Net::HTTP.get URI(post.image_src)
+    if post.image_src.nil? || res != '200'
       img = case post.source
               when "ruli" then "ruli.png"
               when "dcinside" then "dcinside.png"
