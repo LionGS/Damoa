@@ -1,11 +1,3 @@
-.table-wrapper
-  %table
-    %thead
-      %tr
-        %th 출처
-        %th 제목
-        %th 평점
-    %tbody#infinite_scroll
-      =render 'data',posts: @results
 - unless @results.empty?
+  =render 'data',posts: @results
   =paginate @results, window: 5

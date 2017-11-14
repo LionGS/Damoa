@@ -74,11 +74,12 @@
         </header>
         <ul>
           <li><%= link_to "사이트 소개", intro_path %></li>
-          <li><%= link_to "인기 게시물",root_path %></li>
+          <li><%= link_to "인기 게시물", root_path %></li>
           <% if user_signed_in? %> <!--로그인을 했을때만 나타나는 메뉴 -->
-            <li><%= link_to "열람 기록",history_index_path %></li>
-            <li><%= link_to "즐겨찾기",scrap_index_path %></li>
-            <li><%= link_to "나의 정보 수정",edit_user_registration_path %></li>
+            <li><%= link_to "열람 기록", history_index_path %></li>
+            <li><%= link_to "즐겨찾기", scrap_index_path %></li>
+            <li><%= link_to "추천게시물", recommend_path %></li>
+            <li><%= link_to "나의 정보 수정", edit_user_registration_path %></li>
           <% end %>
           <!--<li><a href="#">라라라라라</a></li>-->
           <!--<li><a href="#">Adipiscing</a></li>-->
@@ -130,7 +131,7 @@
         </header>
         <p>저희 사이트의 개선사항을 제보해 주세요. 빠른 시일내에 반영하겠습니다.</p>
         <ul class="contact">
-          <li class="fa-envelope-o"><a href="#">gb1541@gmail.com</a></li>
+          <li class="fa-envelope-o"><a href="mailto:gb1541@gmail.com">gb1541@gmail.com</a></li>
         </ul>
       </section>
 

@@ -13,8 +13,10 @@
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           %div{:class => "4u$ 6u$(medium) 12u$(small)"}
             = f.label :tag_list, "관심 키워드"
+            %div{:class => "12u$"}
+            = f.label :tag_list, ", 으로 키워드를 구분지어주세요."
           %div{:class => "12u$"}
-            = f.text_area :tag_list, value: resource.tag_list.join(", "), :rows => "5"
+            = f.text_area :tag_list, value: resource.tag_list.join(", "), :rows => "5", :place_holder => ', 으로 키워드를 구분시켜 주세요'
           %div{:class => "4u$ 6u$(medium) 12u$(small)", :style => "margin: 10px 0 0 0"}
             = f.submit "수정완료", class: "special"
       #tabContent02.tabPage
