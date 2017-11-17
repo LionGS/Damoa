@@ -20,6 +20,4 @@
               =link_to "싫어요 " + post.get_dislikes.size.to_s, "/dislike/" + post.post_no.to_s, class: current_user.disliked?(post) ? 'button special' : 'button'
             -else
               =link_to "싫어요", "/dislike/" + post.post_no.to_s, class: "button"
-
--#%p.pagination
--#  =link_to_next_page @results.results, 'Next Page', :remote => true
+  =paginate @posts, window: 5

@@ -1,10 +1,21 @@
--if posts
-  -posts.each do |post|
-    %tr
-      %td
-        =source_img post.source
-      %td
-        =link_to "/totalpost/show/#{post.post_no}" do
-          =truncate post.title, length: 50
-      %td
-        =post.popurarity
+.table-wrapper
+  %table
+    %thead
+      %tr
+        %th 출처
+        %th 제목
+        %th 추천수
+        %th 평점
+    %tbody#infinite_scroll
+      -if posts
+        -posts.each do |post|
+          %tr
+            %td
+              =source_img post.source
+            %td
+              =link_to "/totalpost/show/#{post.post_no}" do
+                =truncate post.title, length: 30
+            %td
+              =post.recommened
+            %td
+              =post.popurarity

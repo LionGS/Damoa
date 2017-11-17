@@ -1,9 +1,2 @@
-.table-wrapper
-  %table
-    %thead
-      %tr
-        %th 출처
-        %th 제목
-        %th 평점
-    %tbody#infinite_scroll
-      =render 'data',posts: @posts
+=render 'data',posts: @posts
+=paginate @posts, window: 5

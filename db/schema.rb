@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105132938) do
+ActiveRecord::Schema.define(version: 20171109104354) do
 
   create_table "deletedusers", primary_key: "email", id: :string, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.datetime "remember_created_at"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20171105132938) do
     t.integer  "hits"
     t.integer  "recommened"
     t.datetime "last_update"
-    t.float    "popurarity",     limit: 24
+    t.integer  "popurarity"
     t.text     "posttext",       limit: 65535, collation: "utf8mb4_general_ci"
     t.string   "image_src"
     t.index ["link"], name: "idx_link", using: :btree

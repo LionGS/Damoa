@@ -58,9 +58,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 
 gem 'kaminari'
-gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'figaro'
 gem 'font-awesome-sass'
 
 gem 'search_cop'
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'rails-erd', require: false, group: :development
+gem 'addressable'

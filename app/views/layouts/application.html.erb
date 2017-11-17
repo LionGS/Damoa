@@ -31,7 +31,7 @@
 
       <!-- Header -->
       <header id="header">
-        <a href="index.html" class="logo"><strong>Damoa</strong> by 폭풍전야</a>
+        <a href="/" class="logo"><strong>Damoa</strong> by 폭풍전야</a>
         <ul class="icons">
           <% if user_signed_in? %>
               <li>
@@ -75,11 +75,12 @@
         </header>
         <ul>
           <li><%= link_to "사이트 소개", intro_path %></li>
-          <li><%= link_to "인기 게시물",root_path %></li>
+          <li><%= link_to "인기 게시물", root_path %></li>
           <% if user_signed_in? %> <!--로그인을 했을때만 나타나는 메뉴 -->
-            <li><%= link_to "열람 기록",history_index_path %></li>
-            <li><%= link_to "즐겨찾기",scrap_index_path %></li>
-            <li><%= link_to "나의 정보 수정",edit_user_registration_path %></li>
+            <li><%= link_to "열람 기록", history_index_path %></li>
+            <li><%= link_to "즐겨찾기", scrap_index_path %></li>
+            <li><%= link_to "추천게시물", recommend_path %></li>
+            <li><%= link_to "나의 정보 수정", edit_user_registration_path %></li>
           <% end %>
           <!--<li><a href="#">라라라라라</a></li>-->
           <!--<li><a href="#">Adipiscing</a></li>-->
@@ -129,12 +130,9 @@
         <header class="major">
           <h2>Get in touch</h2>
         </header>
-        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+        <p>저희 사이트의 개선사항을 제보해 주세요. 빠른 시일내에 반영하겠습니다.</p>
         <ul class="contact">
-          <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
-          <li class="fa-phone">(000) 000-0000</li>
-          <li class="fa-home">1234 Somewhere Road #8254<br />
-            Nashville, TN 00000-0000</li>
+          <li class="fa-envelope-o"><a href="mailto:gb1541@gmail.com">gb1541@gmail.com</a></li>
         </ul>
       </section>
 

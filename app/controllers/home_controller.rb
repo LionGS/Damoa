@@ -1,12 +1,26 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in? && current_user.tag_list.size > 0
-      if current_user.recommend_update_date < current_user.tag_update_date
+      unless current_user.recommend_update_date.nil?
+        if current_user.recommend_update_date < current_user.tag_update_date
+          ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
+          recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc).limit 1000
+          if recommend.size > 0
+            time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+            values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
+            ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+          end
+          current_user.recommend_update_date = DateTime.now
+          current_user.save
+        end
+      else
         ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
-        recommend = Totalpost.search current_user.tag_list.join " "
-        time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
-        values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
-        ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+        recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc).limit 1000
+        if recommend.size > 0
+          time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+          values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
+          ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+        end
         current_user.recommend_update_date = DateTime.now
         current_user.save
       end
@@ -39,12 +53,16 @@ class HomeController < ApplicationController
     if @user.voted_for? @post
       if @user.voted_as_when_voted_for @post
         @post.unliked_by @user
+        @post.popurarity -= 1
       else
         @user.likes @post
+        @post.popurarity += 1
       end
     else
       @user.likes @post
+      @post.popurarity += 1
     end
+    @post.save
     redirect_back(fallback_location: root_path)
   end
 
@@ -55,12 +73,16 @@ class HomeController < ApplicationController
     if @user.voted_for? @post
       if @user.voted_as_when_voted_for @post
         @user.dislikes @post
+        @post.popurarity -= 1
       else
         @post.undisliked_by @user
+        @post.popurarity += 1
       end
     else
       @user.dislikes @post
+      @post.popurarity -= 1
     end
+    @post.save
     redirect_back(fallback_location: root_path)
   end
 
@@ -76,6 +98,6 @@ class HomeController < ApplicationController
   end
 
   def scrap_index
-    @posts = ScrapedPost.where user_id: current_user.id
+    @posts = ScrapedPost.where(user_id: current_user.id).page params[:page]
   end
 end
