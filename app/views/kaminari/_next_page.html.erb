@@ -6,6 +6,12 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<li>
-  <%= link_to_unless current_page.last?, '>>', url, rel: 'next', remote: remote, class: 'button small'%>
-</li>
+<% if browser.device.mobile? %>
+  <li>
+    <%= link_to_unless current_page.last?, '>', url, rel: 'next', remote: remote, class: 'page'%>
+  </li>
+<% else %>
+  <li>
+    <%= link_to_unless current_page.last?, '>', url, rel: 'next', remote: remote, class: 'button'%>
+  </li>
+<% end %>
