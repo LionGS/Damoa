@@ -1,26 +1,44 @@
-소개 페이지
-
 <div class="intro-wrapper">
-    <div class="intro-bord">
-        &nbsp&nbsp&nbsp우리 페이지 Damoa는 사용자들의 관심사를 조사하여 따로 검색할 필요없이 원하는 게시물을 열람할 수 있는 페이지입니다.<br>
-        저희는 여러 커뮤니티 사이트들을 크롤링하여 각각에서 인기있는 게시물들을 모아 볼 수 있습니다.<br>
-        이용하는 방법은 로그인을 하신후 나의 정보 수정 -> 관심키워드에 키워드를 입력하시면 왼쪽 하단 추천게시물에서 원하는 게시물을 볼수있습니다.<br>
-        
-    </div>
-    <div class="crawling">
-        크롤링 사이트<br>
-        <div class="slider">
-            <figure>
-                <%= image_tag "humoruniv.png" %>
-                <%= image_tag "clien.png" %>
-                <%= image_tag "ruli.png" %>
-                <%= image_tag "thisisgame.jpg" %>
-                <%= image_tag "ygosu.png" %>
-                <%= image_tag "bobaedream.jpg" %>
-                <%= image_tag "dcinside.png" %>
-                <%= image_tag "etc.gif" %>
-                <%= image_tag "gameshot.png" %>
-            </figure>
+    <div class="intro-layout">
+        <h1 class="da">Damoa</h1>
+        <div class="intro-bord">
+            <div class="tro">
+                <br><br>
+                <p class="p-title"> 
+                    Damoa는 사용자들의 관심사를 조사하여<br>
+                    맞춤 게시물을 열람할 수 있는 페이지입니다.<br>
+                </p>
+                <p class="p-bottom">
+                    Damoa는 여러 커뮤니티 사이트들을 크롤링하여 각각에서<br> 인기있는 게시물들을 모아 볼 수 있습니다.<br>
+                </p>
+                <br><br>
+            </div>
+        </div>
+        <div class="intro-etc">
+            - 추천 게시물 이용 방법 : 로그인 -> 자기정보 수정 -> 키워드 입력<br>
+            <div class="repre-img">
+                <%= image_tag "login.PNG" %>
+                <%= image_tag "modify.PNG" %>
+            </div>
+            - 히스토리 : 내가 열람했던 게시물들의 모임<br>
+            - 즐겨찾기 : 즐겨찾기를 활성화한 게시판들의 모임<br>
+            - 평점 계산방법 : ((게시물 조회수 / 사이트별추천수당 조회수 비율) + 게시물 추천수) - 시간 가중치(10시간당 -1 로 산정)
+        </div>
+        <div class="crawling">
+            - 크롤링 사이트<br>
+            <div class="slider">
+                <figure>
+                    <%= image_tag "humoruniv.png" %>
+                    <%= image_tag "clien.png" %>
+                    <%= image_tag "ruli.png" %>
+                    <%= image_tag "thisisgame.jpg" %>
+                    <%= image_tag "ygosu.png" %>
+                    <%= image_tag "bobaedream.jpg" %>
+                    <%= image_tag "dcinside.png" %>
+                    <%= image_tag "etc.gif" %>
+                    <%= image_tag "gameshot.png" %>
+                </figure>
+            </div>
         </div>
     </div>
 </div>
