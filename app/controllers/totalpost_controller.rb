@@ -14,7 +14,7 @@ class TotalpostController < ApplicationController
 
     @link = @post.link
 
-    @scrap = ScrapedPost.where(user_id: current_user,totalpost_id: @post).page params[:page]
+    @scrap = ScrapedPost.where(user_id: current_user,totalpost_id: @post).order(created_at: :asc).page params[:page]
 
   end
 

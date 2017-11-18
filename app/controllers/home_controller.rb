@@ -4,7 +4,7 @@ class HomeController < ApplicationController
       unless current_user.recommend_update_date.nil?
         if current_user.recommend_update_date < current_user.tag_update_date
           ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
-          recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc).limit 1000
+          recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
           if recommend.size > 0
             time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
             values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
         end
       else
         ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
-        recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc).limit 1000
+        recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
         if recommend.size > 0
           time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
           values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
@@ -24,10 +24,8 @@ class HomeController < ApplicationController
         current_user.recommend_update_date = DateTime.now
         current_user.save
       end
-      @recommend_posts = RecommendPost.where(user_id: current_user).order(point: :desc).page(1).per(10)
-      @recommend_posts ||= RecommendPost.none
     end
-    @posts = Totalpost.all.order(popurarity: :desc).page params[:page]
+    @posts = Totalpost.where("mydate >= ?",7.days.ago).order(popurarity: :desc, recommened: :desc).page params[:page]
   end
 
 

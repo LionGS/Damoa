@@ -31,20 +31,22 @@
       <!-- Header -->
       <header id="header">
         <a href="/" class="logo"><strong>Damoa</strong> by 폭풍전야</a>
-        <ul class="icons">
+        <!--<ul class="icons">-->
+        <div class="4u">
           <% if user_signed_in? %>
-              <li>
+              <!--<li>-->
                 <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 하시겠습니까?" } ,class: 'button small' %>
-              </li>
+              <!--</li>-->
           <% else %>
-              <li>
+              <!--<li>-->
                 <%= link_to "로그인", new_user_session_path, class: 'button small' %>
-              </li>
-              <li>
+              <!--</li>-->
+              <!--<li>-->
                 <%= link_to "회원가입", new_user_registration_path, class: 'button small' %>
-              </li>
+              <!--</li>-->
           <% end %>
-        </ul>
+        </div>
+        <!--</ul>-->
       </header>
       <section>
         <%= yield %>
@@ -105,7 +107,7 @@
             <h2>추천 게시물</h2>
           </header>
           <div class="mini-posts">
-            <% @recommends = RecommendPost.where(user_id: current_user).limit 5 %>
+            <% @recommends = RecommendPost.where(user_id: current_user).sample 5 %>
             <% @recommends.each do |recommend| %>
                 <% post = recommend.totalpost %>
                 <article>
