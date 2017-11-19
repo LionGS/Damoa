@@ -8,7 +8,24 @@
 */
 
 /* Reset */
-
+@font-face {
+	  font-family: 'Jeongum';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/seoul/Jeongum/Jeongum.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/seoul/Jeongum/Jeongum.woff') format('woff');
+}
+	@font-face {
+	  font-family: 'Hankc';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/hani/Hankc/Hankc.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/hani/Hankc/Hankc.woff') format('woff');
+}
+	@font-face {
+		font-family: 'BareunBatang';
+		font-style: normal;
+		font-weight: 700;
+		src: url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/othrs/kpa/BareunBatang/BareunBatangOTFB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/othrs/kpa/BareunBatang/BareunBatangOTFB.woff') format('woff');
+}
 	@font-face{
 		font-family: 'Enjoystories';
 		src: url('/fonts/tvN Enjoystories Medium.ttf');
@@ -2162,7 +2179,7 @@
 		font-size: 3rem;
 		margin: 0 0 0.5em 0;
 		line-height: 1.3;
-		<!--font-family: 'Enjoystories';-->
+		font-family: 'Enjoystories';
 	}
 
 	h2 {
@@ -4077,7 +4094,10 @@
 			margin-top: 0;
 			padding-top: 0;
 		}
-
+.menu-wrapper{
+	font-size: 1rem;
+	font-family: 'BareunBatang' !important;
+}
 .intro-bord{
 	margin-left: 2%;
 	margin-top: 2%;
@@ -4097,7 +4117,6 @@
 }
 .p-bottom{
 	font-size: 0.8rem;
-	font-size: 'tvN Enjoystories Bold.ttf';
 }
 .repre-img{
 	margin-top: 2%;
@@ -4109,10 +4128,11 @@
 	 padding-top: 5%;
 	 padding-bottom: 5%;
 	 margin-top: 5%;
-
+	font-family: 'Jeongum';
 }
 .crawling{
 	margin-top: 5%;
+	font-family: 'Jeongum';
 }
 .intro-image{
 	display: flex;
