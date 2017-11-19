@@ -27,14 +27,11 @@ class HomeController < ApplicationController
     if @user.voted_for? @post
       if @user.voted_as_when_voted_for @post
         @post.unliked_by @user
-        @post.popurarity -= 1
       else
         @user.likes @post
-        @post.popurarity += 1
       end
     else
       @user.likes @post
-      @post.popurarity += 1
     end
     @post.save
     redirect_back(fallback_location: root_path)
@@ -47,14 +44,11 @@ class HomeController < ApplicationController
     if @user.voted_for? @post
       if @user.voted_as_when_voted_for @post
         @user.dislikes @post
-        @post.popurarity -= 1
       else
         @post.undisliked_by @user
-        @post.popurarity += 1
       end
     else
       @user.dislikes @post
-      @post.popurarity -= 1
     end
     @post.save
     redirect_back(fallback_location: root_path)
