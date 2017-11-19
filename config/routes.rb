@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   get '/dislike/:id' => 'home#dislike'
   get '/scrap/:id' => 'home#scrap'
   get 'scrap_index' => 'home#scrap_index'
+  get 'new_posts' => 'home#new_posts'
+  get 'index' => 'home#index'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   post "data" => "home#data_input"
   get "search" => "home#search"
   resources :history
-  root to: "home#index"
+  root to: "home#intro"
 end

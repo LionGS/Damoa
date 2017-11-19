@@ -98,4 +98,8 @@ class HomeController < ApplicationController
   def scrap_index
     @posts = ScrapedPost.where(user_id: current_user.id).page params[:page]
   end
+
+  def new_posts
+    @posts = Totalpost.all.order(mydate: :desc).page params[:page]
+  end
 end

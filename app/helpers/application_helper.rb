@@ -20,4 +20,21 @@ module ApplicationHelper
     end
 
   end
+
+  def source_convert(source)
+    case source
+      when "ruli" then "루리웹"
+      when "dcinside" then "디씨인사이드"
+      when "humoruniv" then "웃긴대학"
+      when "clien" then "클리앙"
+      when "bobaedream" then "보배드림"
+      when "gameshot" then "게임샷"
+      when "thisisgame" then "디스이즈게임"
+      when "ygosu"then "와이고수"
+      when "82cook" then "82쿡"
+      when "fmkorea" then "에프엠코리아"
+      when "quasarzone" then "퀘이사존"
+      else "기타"
+    end
+  end
 end

@@ -24,18 +24,73 @@
             - 즐겨찾기 : 즐겨찾기를 활성화한 게시판들의 모임<br>
             - 평점 계산방법 : ((게시물 조회수 / 사이트별추천수당 조회수 비율) + 게시물 추천수) - 시간 가중치(10시간당 -1 로 산정)
         </div>
+        <div class="row" id="pie-chart" style="width: 600px;height:400px;"></div>
+        <script>
+            // Create a pie chart:
+            echarts.init(document.getElementById('pie-chart')).setOption({
+                title : {
+                    text: '수집한 사이트별 게시물',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b} : {c} ({d}%)"
+                },
+                series: {
+                    type: 'pie',
+                    data: [
+                        <% group_count = Totalpost.all.group(:source).count.each do |k,v| %>
+                        {name: "<%= source_convert k %>", value: <%= v %>},
+                        <% end %>
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            });
+        </script>
+        <div class="row" id="" style="width: 600px;height:400px;"></div>
+        <script>
+            // Create a pie chart:
+            echarts.init(document.getElementById('pie-chart')).setOption({
+                title : {
+                    text: '수집한 사이트별 게시물',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b} : {c} ({d}%)"
+                },
+                series: {
+                    type: 'pie',
+                    data: [
+                        <% group_count = Totalpost.all.group(:source).count.each do |k,v| %>
+                        {name: "<%= source_convert k %>", value: <%= v %>},
+                        <% end %>
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            });
+        </script>
         <div class="crawling">
             - 크롤링 사이트<br>
             <div class="slider">
                 <figure>
                     <%= image_tag "humoruniv.png" %>
-                    <%= image_tag "clien.png" %>
                     <%= image_tag "ruli.png" %>
                     <%= image_tag "thisisgame.jpg" %>
                     <%= image_tag "ygosu.png" %>
                     <%= image_tag "bobaedream.jpg" %>
-                    <%= image_tag "dcinside.png" %>
-                    <%= image_tag "etc.gif" %>
                     <%= image_tag "gameshot.png" %>
                 </figure>
             </div>

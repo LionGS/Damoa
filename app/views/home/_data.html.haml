@@ -4,6 +4,7 @@
       %tr
         %th 출처
         %th 제목
+        %th 게시일
         %th 추천수
         %th 평점
     %tbody#infinite_scroll
@@ -15,6 +16,8 @@
             %td
               =link_to "/totalpost/show/#{post.post_no}" do
                 =truncate post.title, length: 30
+            %td
+              =time_ago_in_words(post.mydate) + "전"
             %td
               =post.recommened
             %td

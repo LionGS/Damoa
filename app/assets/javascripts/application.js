@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.infinitescroll
+//= require echarts.min
 //= require_tree .
