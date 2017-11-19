@@ -1,30 +1,6 @@
 class HomeController < ApplicationController
+  before_action :post_recommend
   def index
-    if user_signed_in? && current_user.tag_list.size > 0
-      unless current_user.recommend_update_date.nil?
-        if current_user.recommend_update_date < current_user.tag_update_date
-          ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
-          recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
-          if recommend.size > 0
-            time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
-            values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
-            ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
-          end
-          current_user.recommend_update_date = DateTime.now
-          current_user.save
-        end
-      else
-        ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
-        recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
-        if recommend.size > 0
-          time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
-          values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
-          ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
-        end
-        current_user.recommend_update_date = DateTime.now
-        current_user.save
-      end
-    end
     @posts = Totalpost.where("mydate >= ?",7.days.ago).order(popurarity: :desc, recommened: :desc).page params[:page]
   end
 
@@ -101,5 +77,35 @@ class HomeController < ApplicationController
 
   def new_posts
     @posts = Totalpost.all.order(mydate: :desc).page params[:page]
+  end
+
+  private
+
+  def post_recommend
+    if user_signed_in? && current_user.tag_list.size > 0
+      unless current_user.recommend_update_date.nil?
+        if current_user.recommend_update_date < current_user.tag_update_date
+          ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
+          recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
+          if recommend.size > 0
+            time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+            values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
+            ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+          end
+          current_user.recommend_update_date = DateTime.now
+          current_user.save
+        end
+      else
+        ActiveRecord::Base.connection.execute("DELETE FROM recommend_posts where user_id=#{current_user.id}")
+        recommend = Totalpost.search(current_user.tag_list.join " OR ").order(popurarity: :desc, recommened: :desc).limit 1000
+        if recommend.size > 0
+          time = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+          values = recommend.each.map { |post| "(#{current_user.id}, #{post.id}, #{post.popurarity}, \"#{time}\", \"#{time}\")" }.join ","
+          ActiveRecord::Base.connection.execute("INSERT INTO recommend_posts (user_id,totalpost_id,point,created_at,updated_at) VALUES #{values}")
+        end
+        current_user.recommend_update_date = DateTime.now
+        current_user.save
+      end
+    end
   end
 end
