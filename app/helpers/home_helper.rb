@@ -37,7 +37,10 @@ module HomeHelper
             when "bobaedream" then "bobaedream.jpg"
             when "gameshot" then "gameshot.png"
             when "thisisgame" then "thisisgame.jpg"
-            when "ygosu"then "ygosu.png"
+            when "ygosu"then "ygosu.gif"
+            when "fmkorea" then "fmko.png"
+            when "82cook" then "82cook.png"
+              when "quasarzone" then "qsz.png"
             else "etc.gif"
           end
     image_tag img,class: "img-thumbnail",style: "max-height:50px;"
