@@ -5,8 +5,9 @@
         %th 출처
         %th 제목
         %th 게시일
-        %th 추천수
-        %th 평점
+        -unless browser.device.mobile?
+          %th 추천수
+          %th 평점
     %tbody#infinite_scroll
       -if posts
         -posts.each do |post|
@@ -18,7 +19,8 @@
                 =truncate post.title, length: 30
             %td
               =post.mydate.utc.strftime("%m-%d %H:%M")
-            %td
-              =post.recommened
-            %td
-              =post.popurarity
+            -unless browser.device.mobile?
+              %td
+                =post.recommened
+              %td
+                =post.popurarity
