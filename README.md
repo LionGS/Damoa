@@ -1,24 +1,6 @@
-# README
+# 다모아
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+웹 사이트의 게시물들을 크롤링 하여 모아보여주는 사이트
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 사용 웹 프레임 워크
+** Ruby on rails 5
